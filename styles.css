@@ -14,6 +14,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  transition: top 0.3s;
+  z-index: 1000;
 }
 
 header a {
@@ -70,4 +75,38 @@ li {
 
 button {
   cursor: pointer;
+}
+
+/* Add additional styles based on your preferences */
+
+/* Styles for the collapsing header */
+header.collapsed {
+  top: -80px; /* Adjust the value based on your header height */
+}
+
+/* Styles for the Instagram account icon */
+header i {
+  font-size: 1.5rem;
+}
+
+/* Styles for the item manage dialog */
+#addTaskDialog {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#addTaskDialog button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#addTaskDialog button:hover {
+  background-color: #2980b9;
 }
