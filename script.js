@@ -78,8 +78,8 @@ function closeDetailPage() {
 
 // Function to show the add task dialog
 function showAddTaskDialog() {
-  document.getElementById('addTaskDialog').style.display = 'block';
-  document.getElementById('overlay').style.display = 'block';
+  const fabModal = document.getElementById('fabModal');
+  fabModal.classList.toggle('hidden');
 }
 
 // Function to handle the completion of adding a new task
@@ -94,8 +94,8 @@ function doneAddingTask() {
     renderTasks();
 
     // Close the dialog
-    document.getElementById('addTaskDialog').style.display = 'none';
-    document.getElementById('overlay').style.display = 'none';
+    const fabModal = document.getElementById('fabModal');
+    fabModal.classList.add('hidden');
 
     // Clear the input field
     document.getElementById('taskTitle').value = '';
@@ -188,4 +188,22 @@ function handleOptionClick(index, option) {
     case 'mark':
       toggleTaskStatus(index);
       break;
-    case
+    case 'delete':
+      deleteTask(index);
+      break;
+    default:
+      break;
+  }
+}
+
+// Function to close the options dropdown
+function closeOptionsDropdown() {
+  const optionsDropdowns = document.querySelectorAll('.options-dropdown');
+  optionsDropdowns.forEach(dropdown => dropdown.style.display = 'none');
+
+  // Remove the click event listener to avoid interference with regular clicks
+  document.removeEventListener('click', closeOptionsDropdown);
+}
+
+// Initial rendering of tasks when the page loads
+renderTasks();
