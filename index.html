@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Prakhar Doneria">
-  <meta name="description" content="A simple and efficient to-do app inspired by Apple Apps, designed and developed by Prakhar Doneria. Manage your tasks seamlessly on any device.">
-  <meta name="keywords" content="to-do app, task manager, productivity, web development, Prakhar Doneria">
-
+  <title>To-Do App</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
-
-  <title>To-Do App by Prakhar Doneria</title>
 </head>
+
 <body>
   <header class="flex justify-between items-center bg-blue-500 p-4 text-white">
-    <div class="flex items-center">
-      <i class="fab fa-instagram text-2xl mr-2"></i>
-      <a href="https://www.instagram.com/protecstudioofficial" target="_blank" rel="noopener noreferrer">@protecstudioofficial</a>
-    </div>
+    <button id="instagramBtn" class="text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        class="h-6 w-6 inline-block">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M14 5l2 6h6M7 19c0 1.104.896 2 2 2h8c1.104 0 2-.896 2-2V7c0-1.104-.896-2-2-2h-8c-1.104 0-2 .896-2 2v12zm-1-9a3 3 0 0 1 6 0m-6 5a6 6 0 1 1 12 0"></path>
+      </svg>
+    </button>
     <div>
-      <h1 class="text-2xl font-bold">To Do App</h1>
-      <h4 id="greeting" class="text-sm"></h4>
+      <h1 class="text-2xl">To-Do App</h1>
+      <h4 id="greeting"></h4>
     </div>
   </header>
 
@@ -29,26 +28,22 @@
     <span class="text-2xl">+</span>
   </button>
 
-  <input type="text" id="taskInput" placeholder="Add a new task" class="border p-2 my-2">
-  <button onclick="addTask()" class="bg-green-500 text-white p-2 rounded">Add Task</button>
+  <div id="overlay"></div>
+
+  <div id="addTaskDialog" class="bg-white p-4 rounded-md shadow-md">
+    <label for="taskTitle" class="block mb-2">Title:</label>
+    <input type="text" id="taskTitle" class="border p-2 mb-4 w-full rounded-md">
+    <button onclick="doneAddingTask()" class="bg-blue-500 text-white p-2 rounded-md">Done</button>
+  </div>
 
   <ul id="taskList"></ul>
 
-  <div id="overlay"></div>
-
-  <div id="detailPage">
-    <div id="detailContent"></div>
-    <button onclick="closeDetailPage()" class="bg-blue-500 text-white p-2 rounded">Close</button>
-  </div>
-
-  <div id="addTaskDialog" class="hidden">
-    <div class="bg-white p-4 rounded shadow-md">
-      <label for="taskTitle" class="block mb-2">Title:</label>
-      <input type="text" id="taskTitle" class="border p-2 w-full mb-2">
-      <button onclick="doneAddingTask()" class="bg-green-500 text-white p-2 rounded">Done</button>
-    </div>
+  <div id="detailPage" class="bg-white p-4 rounded-md shadow-md">
+    <p id="detailContent"></p>
+    <button onclick="closeDetailPage()" class="bg-blue-500 text-white p-2 rounded-md">Close</button>
   </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>
