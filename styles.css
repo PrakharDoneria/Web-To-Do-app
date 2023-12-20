@@ -1,14 +1,15 @@
-body {
-  font-family: 'Arial', sans-serif;
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
 }
 
-h1, h4 {
-  margin: 0;
-}
-
+/* Add these styles to your CSS file */
 header {
   background-color: #2c3e50;
   padding: 1rem;
@@ -22,46 +23,31 @@ header {
   z-index: 1000;
 }
 
-header a {
-  color: white;
-  text-decoration: none;
+header > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-header i {
+#instagramBtn {
   font-size: 1.5rem;
-  margin-right: 10px;
+}
+
+#fabModal {
+  z-index: 10;
+}
+
+#fabModal > div {
+  max-width: 400px;
+  margin: auto;
 }
 
 #addTaskBtn {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
 }
 
-#taskInput, button {
-  margin-top: 1rem;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  cursor: pointer;
-  margin: 5px 0;
-  padding: 10px;
-  background-color: #ecf0f1;
-  border-radius: 10px;
-  position: relative;
-}
-
-.completed {
-  text-decoration: line-through;
-  color: #888;
+#addTaskBtn:hover {
+  transform: scale(1.1);
 }
 
 #overlay {
@@ -71,77 +57,76 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-#detailPage, #fabModal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
+#addTaskDialog,
+#detailPage,
+#fabModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-button {
+#addTaskDialog,
+#detailPage,
+#fabModal input,
+#fabModal button {
+  margin-top: 1rem;
+}
+
+#taskList {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 80px; /* Adjusted to account for the header */
+}
+
+#taskList li {
   cursor: pointer;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  margin-bottom: 0.5rem;
+  position: relative;
 }
 
-/* Styles for the collapsing header */
-header.collapsed {
-  top: -80px; /* Adjust the value based on your header height */
+#taskList li.completed {
+  text-decoration: line-through;
+  color: #555;
 }
 
-/* Styles for the dropdown options */
 .options-dropdown {
   display: none;
   position: absolute;
   top: 0;
   right: 0;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  z-index: 1;
-}
-
-li:hover .options-dropdown {
-  display: block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
 }
 
 .options-dropdown button {
   display: block;
   width: 100%;
-  padding: 10px;
-  border: none;
-  background-color: #ecf0f1;
+  padding: 0.5rem;
   text-align: left;
-  border-radius: 5px;
+  border: none;
+  background: none;
   cursor: pointer;
 }
 
 .options-dropdown button:hover {
-  background-color: #d4d7d9;
+  background-color: #f0f0f0;
 }
 
-/* Styles for the Instagram button */
-#instagramBtn {
-  font-size: 1.5rem; /* Adjust the size as needed */
-}
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  header {
+    padding: 0.5rem;
+  }
 
-/* Styles for the FAB */
-#addTaskBtn {
-  position: fixed;
-  bottom: 4rem;
-  right: 4rem;
-}
-
-/* Styles for the FAB modal */
-#fabModal {
-  z-index: 10;
-}
-
-#fabModal > div {
-  max-width: 400px;
-  margin: auto;
+  #addTaskBtn {
+    font-size: 1.5rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
 }
