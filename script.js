@@ -84,7 +84,7 @@ function closeDetailPage() {
 // Function to show the add task dialog
 function showAddTaskDialog() {
   const fabModal = document.getElementById('fabModal');
-  fabModal.classList.toggle('hidden');
+  fabModal.classList.remove('hidden');
 }
 
 // Function to handle the completion of adding a new task
@@ -127,7 +127,7 @@ function renderTasks() {
 
     // Options dropdown
     const optionsDropdown = document.createElement('div');
-    optionsDropdown.className = 'options-dropdown';
+    optionsDropdown.className = 'options-dropdown hidden'; // Initially hidden
     optionsDropdown.id = `optionsDropdown${index}`;
 
     const editButton = document.createElement('button');
@@ -212,6 +212,14 @@ function handleOptionClick(index, option) {
       break;
   }
 }
+
+// Event listener for clicks on the body
+document.body.addEventListener('click', (event) => {
+  const isOptionsButton = event.target.closest('.options-dropdown button');
+  if (!isOptionsButton) {
+    closeOptionsDropdown();
+  }
+});
 
 // Initial rendering of tasks when the page loads
 renderTasks();
