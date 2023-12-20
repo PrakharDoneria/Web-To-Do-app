@@ -5,6 +5,10 @@ body {
   background-color: #f4f4f4;
 }
 
+h1, h4 {
+  margin: 0;
+}
+
 header {
   background-color: #2c3e50;
   padding: 1rem;
@@ -84,33 +88,9 @@ button {
   cursor: pointer;
 }
 
-/* Add additional styles based on your preferences */
-
 /* Styles for the collapsing header */
 header.collapsed {
   top: -80px; /* Adjust the value based on your header height */
-}
-
-/* Styles for the item manage dialog */
-#addTaskDialog {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-#addTaskDialog button {
-  background-color: #3498db;
-  color: white;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#addTaskDialog button:hover {
-  background-color: #2980b9;
 }
 
 /* Styles for the dropdown options */
