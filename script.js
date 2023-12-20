@@ -12,6 +12,11 @@ function getGreeting() {
   }
 }
 
+// Function to open Instagram account
+function openInstagramAccount() {
+  window.open('https://www.instagram.com/protecstudioofficial', '_blank');
+}
+
 // Function to add a new task
 function addTask() {
   const taskInput = document.getElementById('taskInput');
@@ -166,6 +171,9 @@ function showOptionsDropdown(index, x, y) {
   optionsDropdown.style.top = `${y}px`;
   optionsDropdown.style.left = `${x}px`;
 
+  // Remove the previous click event listener to avoid interference with long press
+  document.removeEventListener('click', closeOptionsDropdown);
+
   // Close the dropdown after clicking on an option
   const optionsButtons = optionsDropdown.querySelectorAll('button');
   optionsButtons.forEach(button => {
@@ -177,6 +185,15 @@ function showOptionsDropdown(index, x, y) {
 
   // Close the dropdown if the user clicks outside of it
   document.addEventListener('click', closeOptionsDropdown);
+}
+
+// Function to close the options dropdown
+function closeOptionsDropdown() {
+  const optionsDropdowns = document.querySelectorAll('.options-dropdown');
+  optionsDropdowns.forEach(dropdown => dropdown.style.display = 'none');
+
+  // Remove the click event listener to avoid interference with regular clicks
+  document.removeEventListener('click', closeOptionsDropdown);
 }
 
 // Function to handle the click on an option in the dropdown
@@ -194,15 +211,6 @@ function handleOptionClick(index, option) {
     default:
       break;
   }
-}
-
-// Function to close the options dropdown
-function closeOptionsDropdown() {
-  const optionsDropdowns = document.querySelectorAll('.options-dropdown');
-  optionsDropdowns.forEach(dropdown => dropdown.style.display = 'none');
-
-  // Remove the click event listener to avoid interference with regular clicks
-  document.removeEventListener('click', closeOptionsDropdown);
 }
 
 // Initial rendering of tasks when the page loads
