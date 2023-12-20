@@ -75,7 +75,7 @@ li {
   z-index: 2;
 }
 
-#detailPage, #addTaskDialog {
+#detailPage, #fabModal {
   display: none;
   position: fixed;
   top: 50%;
@@ -122,4 +122,26 @@ li:hover .options-dropdown {
 
 .options-dropdown button:hover {
   background-color: #d4d7d9;
+}
+
+/* Styles for the Instagram button */
+#instagramBtn {
+  font-size: 1.5rem; /* Adjust the size as needed */
+}
+
+/* Styles for the FAB */
+#addTaskBtn {
+  position: fixed;
+  bottom: 4rem;
+  right: 4rem;
+}
+
+/* Styles for the FAB modal */
+#fabModal {
+  z-index: 10;
+}
+
+#fabModal > div {
+  max-width: 400px;
+  margin: auto;
 }
