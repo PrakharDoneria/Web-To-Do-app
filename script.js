@@ -118,22 +118,27 @@ function renderTasks() {
     }
 
     li.onclick = () => showDetailPage(index);
+    li.oncontextmenu = (event) => handleLongPress(index, event); // Add contextmenu event for long press
 
-    const markButton = document.createElement('button');
-    markButton.textContent = 'Mark';
-    markButton.onclick = () => toggleTaskStatus(index);
+    // Options dropdown
+    const optionsDropdown = document.createElement('div');
+    optionsDropdown.className = 'options-dropdown';
+    optionsDropdown.id = `optionsDropdown${index}`;
 
     const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
-    editButton.onclick = () => editTask(index);
+
+    const markButton = document.createElement('button');
+    markButton.textContent = 'Mark';
 
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
-    deleteButton.onclick = () => deleteTask(index);
 
-    li.appendChild(markButton);
-    li.appendChild(editButton);
-    li.appendChild(deleteButton);
+    optionsDropdown.appendChild(editButton);
+    optionsDropdown.appendChild(markButton);
+    optionsDropdown.appendChild(deleteButton);
+
+    li.appendChild(optionsDropdown);
 
     taskList.appendChild(li);
   });
@@ -143,8 +148,44 @@ function renderTasks() {
   greetingElement.textContent = getGreeting();
 }
 
-// Initial rendering when the page loads
-renderTasks();
+// Function to handle long press on an item
+function handleLongPress(index, event) {
+  // Prevent the default behavior to avoid showing the system context menu
+  event.preventDefault();
 
-// Attach event listeners
-document.getElementById('addTaskBtn').addEventListener('click', showAddTaskDialog);
+  // Show the options dropdown for the pressed item
+  showOptionsDropdown(index, event.clientX, event.clientY);
+}
+
+// Function to show the options dropdown for a task
+function showOptionsDropdown(index, x, y) {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  const optionsDropdown = document.getElementById(`optionsDropdown${index}`);
+
+  optionsDropdown.style.display = 'block';
+  optionsDropdown.style.top = `${y}px`;
+  optionsDropdown.style.left = `${x}px`;
+
+  // Close the dropdown after clicking on an option
+  const optionsButtons = optionsDropdown.querySelectorAll('button');
+  optionsButtons.forEach(button => {
+    button.onclick = () => {
+      optionsDropdown.style.display = 'none';
+      handleOptionClick(index, button.innerText.toLowerCase());
+    };
+  });
+
+  // Close the dropdown if the user clicks outside of it
+  document.addEventListener('click', closeOptionsDropdown);
+}
+
+// Function to handle the click on an option in the dropdown
+function handleOptionClick(index, option) {
+  switch (option) {
+    case 'edit':
+      editTask(index);
+      break;
+    case 'mark':
+      toggleTaskStatus(index);
+      break;
+    case
