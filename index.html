@@ -11,13 +11,13 @@
 
 <body>
   <header class="flex justify-between items-center bg-blue-500 p-4 text-white">
-    <button id="instagramBtn" class="text-white">
-      <i class="fab fa-instagram"></i>
-    </button>
     <div>
       <h1 class="text-2xl">To-Do App</h1>
       <h4 id="greeting"></h4>
     </div>
+    <button id="instagramBtn" class="text-white">
+      <i class="fab fa-instagram"></i>
+    </button>
   </header>
 
   <button id="addTaskBtn" class="fixed bottom-4 right-4 bg-blue-500 text-white p-2 rounded-full shadow-md"
@@ -27,7 +27,19 @@
 
   <div id="overlay"></div>
 
-  <!-- Add this modal to your HTML -->
+  <div id="addTaskDialog" class="bg-white p-4 rounded-md shadow-md hidden">
+    <label for="taskTitle" class="block mb-2">Title:</label>
+    <input type="text" id="taskTitle" class="border p-2 mb-4 w-full rounded-md">
+    <button onclick="doneAddingTask()" class="bg-blue-500 text-white p-2 rounded-md">Done</button>
+  </div>
+
+  <ul id="taskList"></ul>
+
+  <div id="detailPage" class="bg-white p-4 rounded-md shadow-md hidden">
+    <p id="detailContent"></p>
+    <button onclick="closeDetailPage()" class="bg-blue-500 text-white p-2 rounded-md">Close</button>
+  </div>
+
   <div id="fabModal" class="fixed inset-0 flex items-center justify-center hidden">
     <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
     <div class="bg-white p-6 rounded-md shadow-md">
@@ -37,14 +49,7 @@
     </div>
   </div>
 
-  <ul id="taskList"></ul>
-
-  <div id="detailPage" class="bg-white p-4 rounded-md shadow-md">
-    <p id="detailContent"></p>
-    <button onclick="closeDetailPage()" class="bg-blue-500 text-white p-2 rounded-md">Close</button>
-  </div>
-
-  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a1c4659091.js" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 </body>
 
